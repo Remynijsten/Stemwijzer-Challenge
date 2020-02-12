@@ -1,0 +1,84 @@
+.poll {
+  min-height: 850px;
+  width: 1250px;
+  margin: 0 auto;
+  background: white;
+  display: none;
+}
+.poll .progressBar {
+  height: 10px;
+  width: 3.3%;
+  background: #04b4dc;
+  margin-bottom: 2em;
+}
+.poll .back {
+  padding: 0.5em;
+  background: #cccccc;
+  opacity: 0.8;
+  border-radius: 5em;
+  font-size: 1.5em;
+  margin-left: 1em;
+  cursor: pointer;
+  transition: 0.1s ease-out;
+}
+.poll .back:hover {
+  margin-left: 0.75em;
+}
+.poll .contentWrapper {
+  min-height: 850px;
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 2em;
+}
+.poll .contentWrapper .statementWrapper {
+  max-width: 700px;
+  margin-bottom: 7.5em;
+}
+.poll .contentWrapper .statementWrapper #statement {
+  font-size: 2.5em;
+  color: #04b4dc;
+  margin-bottom: 1.5em;
+  font-weight: bold;
+}
+.poll .contentWrapper .statementWrapper #comment {
+  font-size: 2em;
+  font-weight: lighter;
+}
+.poll .contentWrapper .statementControls {
+  margin-bottom: 7.5em;
+}
+.poll .contentWrapper .statementControls button {
+  width: 200px;
+  height: 80px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  background: black;
+  color: white;
+  margin-right: 1em;
+}
+.poll .contentWrapper .statementControls button:hover {
+  background: #04b4dc;
+}
+.poll .contentWrapper .statementControls p {
+  color: #CCCCCC;
+  display: inline-block;
+  margin-left: 3em;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.poll .contentWrapper .statementControls p span {
+  transition: 0.1s ease-out;
+}
+.poll .contentWrapper .statementControls p:hover span {
+  margin-left: 0.5em;
+}
+.poll .contentWrapper .opinion p {
+  cursor: pointer;
+  font-size: 2em;
+}
+.poll .contentWrapper .opinion p span {
+  color: #04b4dc;
+  margin-right: 1em;
+}
+
+/*# sourceMappingURL=poll.css.map */

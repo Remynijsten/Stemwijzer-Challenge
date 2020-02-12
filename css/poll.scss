@@ -1,0 +1,86 @@
+$lightblue: #04b4dc;
+
+.poll{
+    min-height: 850px;
+    width: 1250px;
+    margin: 0 auto;
+    background: white;
+    display: none;
+    .progressBar{
+    	height: 10px;
+    	width: 3.3%;
+    	background: $lightblue;
+    	margin-bottom: 2em;
+    }
+    .back{
+	    padding: 0.5em;
+	    background: #cccccc;
+	    opacity: 0.8;
+	    border-radius: 5em;
+	    font-size: 1.5em;
+	    margin-left: 1em;
+	    cursor: pointer;
+	    transition: 0.1s ease-out;
+	    &:hover{
+	    	margin-left: 0.75em;
+	    }
+    }
+    .contentWrapper{
+    	min-height: 850px;
+	    width: 1000px;
+	    margin: 0 auto;
+	    padding-top: 2em;
+	    .statementWrapper{
+	    	max-width: 700px;
+    	    margin-bottom: 7.5em;
+	    	#statement{
+				font-size: 2.5em;
+				color: $lightblue;
+				margin-bottom: 1.5em;
+				font-weight: bold;
+		    }
+		    #comment{
+				font-size: 2em;
+				font-weight: lighter;
+		    }
+	    }   
+	    .statementControls{
+	    	margin-bottom: 7.5em;
+	    	button{
+				width: 200px;
+			    height: 80px;
+			    font-size: 1.2rem;
+			    border-radius: 10px;
+			    background: black;
+			    color: white;
+			    margin-right: 1em;
+				&:hover{
+					background: $lightblue;
+				}
+			}
+			p{
+				color: #CCCCCC;
+				display: inline-block;
+				margin-left: 3em;
+				font-size: 1.5em;
+				cursor: pointer;
+				span{
+					transition: 0.1s ease-out;
+				}
+				&:hover span{
+					margin-left: 0.5em;
+				}
+			}
+	    }	
+	    .opinion{
+	    	p{
+	    		cursor: pointer;
+	    		font-size: 2em;
+	    		span{
+	    			color: $lightblue;
+	    			margin-right: 1em;
+	    		}
+	    	}
+	    }
+    } 
+}

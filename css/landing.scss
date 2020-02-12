@@ -1,0 +1,131 @@
+$lightblue: #04b4dc;
+
+.startBack{
+	height: 850px;
+	margin: 0 auto;
+	padding: 0;
+	background: $lightblue;
+	.startFront{
+		max-width: 825px;
+		max-height: 850px;
+		margin: -1em 0 0 -2em;
+		background: white;
+		padding: 0;
+		float: left;
+		img{
+			width: 300px;
+			margin-top: 5%;
+			padding-left: 2.5em;
+		}
+		.logoComment{
+			font-size: 1.5em;
+			font-weight: 400;
+			padding-left: 2.5rem;
+		}
+			.callToAction{
+				width: 100%;
+				margin-top: 5%;
+				padding-left: 2.5em;
+				.header{
+					font-size: 2em;
+					color: #49ACDC;
+					font-weight: 800;
+					margin-bottom: 2em;
+				}
+				div{
+					width: 300px;
+				    display: inline-flex;
+				    margin-bottom: 2em;
+					img{
+						width: 3em;
+						float: left;
+						margin: 0 5% 0 0;
+						padding: 0;
+					}
+					.comment{
+						font-size: 1em;
+						line-height: 2em;
+						max-width: 250px;
+					}
+				}
+				.start{
+					width: 300px;
+				    height: 80px;
+				    font-size: 2rem;
+				    border-radius: 10px;
+				    background: black;
+				    color: white;
+				    float: right;
+				    margin-right: 2em;
+					&:hover{
+						background: $lightblue;
+					}
+				}
+
+			}
+			.trackerContainer{
+				padding: 5% 0 5%;
+				width: 100%;
+				border-top: 2px dotted black;
+				margin-bottom: 200px;
+				.trackerHeader{
+					padding-left: 2.5rem;
+					font-size: 1.5em;
+				}
+				.trackerComment{
+					padding-left: 2.5rem;
+					font-size: 1em;
+					max-width: 600px;
+				}
+			}
+	}
+	.parties{
+		width: 300px;
+	    height: 100%;
+	    margin: 0 2em;
+	    display: inline-block;
+	    text-align: right;
+	    img{
+			width: 150px;
+			margin-top: 2em;
+	    }
+		div{
+			width: 100%;
+			display: inline-flex;
+			flex-wrap: wrap;
+			text-align: left;
+			@import 'parties.scss';
+			p{
+				margin: 2rem 0;
+				color: white;
+				width: 100%;
+				font-size: 1.5em;
+			}
+			.w3-badge{
+				margin: 0 1rem 1rem 0;
+			}
+		}
+	}
+}
+
+
+@media (max-width: 1160px){
+	.startBack{
+		background: none;
+		max-width: 900px;
+		margin: 0 auto;
+		.startFront{
+			max-width: 900px;
+		    margin: 0 auto;
+			.trackerContainer{
+				margin-bottom: 0;
+			}
+		}
+		.parties{
+			width: 900px;
+		    max-height: 500px;
+		    margin: 0 auto;
+		    background: #04b4dc;
+		}
+	}
+}

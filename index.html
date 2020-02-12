@@ -9,7 +9,10 @@
 	<meta charset="utf-8">
 </head>
 	<body>
+		<!-- Content Wrapper -->
 		<section class="content">
+
+			<!-- Landing Page -->
 			<div class="w3-container startBack">
 				<div class="w3-container startFront">
 					<img src="img/logo-stemwijzer.svg" alt="logo stemwijzer">
@@ -76,30 +79,72 @@
 					
 				</div>
 			</div>
+
+			<!-- Poll -->
+			<div class="w3-container poll">
+				<!-- Progress Bar -->
+				<div class="w3-light-grey w3-small">
+					<div class="w3-container progressBar"></div>
+				</div>
+				<!-- Back Button -->
+				<span class="back"><i class="fas fa-arrow-left"></i></span>
+
+				<!-- Content Wrapper -->
+				<div class="contentWrapper">
+
+					<!-- Statement Wrapper -->
+					<div class="statementWrapper">
+						<div id="statement">
+							
+						</div>
+
+						<div id="comment">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat.
+						</div>
+					</div>
+
+					<div class="statementControls">
+						<button class="w3-btn eens">EENS</button>
+						<button class="w3-btn geen">GEEN VAN BEIDE</button>
+						<button class="w3-btn oneens">ONEENS</button>
+						<p>Sla deze vraag over <span><i class="fas fa-arrow-right right"></i></span></p>
+					</div>
+
+					<div class="opinion">
+						<p onclick="toggleModal('open')"><span><i class="fas fa-user-tie"></i></span>Wat vinden de partijen?</p>
+					</div>
+
+					<div id="opinionModal" class="w3-modal">
+						<div class="w3-modal-content w3-animate-top w3-card-4">
+							<header class="w3-container w3-teal"> 
+
+							<span onclick="toggleModal()" class="w3-button w3-display-topright">&times;</span>
+								<h2>Modal Header</h2>
+							</header>
+
+							<div class="w3-container">
+								<p>Some text..</p>
+								<p>Some text..</p>
+							</div>
+
+							<footer class="w3-container w3-teal">
+								<p>Modal Footer</p>
+							</footer>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
 		</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<script type="text/javascript" src="js/script.js"></script>
 		<script src="http://stemwijzer.dvc-icta.nl/data.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+		
 		<script src="https://kit.fontawesome.com/970adb2e15.js" crossorigin="anonymous"></script>
 	</body>
 </html>

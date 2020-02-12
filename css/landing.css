@@ -1,30 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-}
-
-.w3-container {
-  padding: 0;
-}
-
-body {
-  background: url("../img/bg.jpg") no-repeat center fixed;
-  background-size: cover;
-}
-body .content {
-  max-width: 100vw;
-  height: 90vh;
-  display: flex;
-  margin-top: 5vh;
-}
-body .content .startBack {
+.startBack {
   height: 850px;
   margin: 0 auto;
   padding: 0;
   background: #04b4dc;
 }
-body .content .startBack .startFront {
+.startBack .startFront {
   max-width: 825px;
   max-height: 850px;
   margin: -1em 0 0 -2em;
@@ -32,44 +12,44 @@ body .content .startBack .startFront {
   padding: 0;
   float: left;
 }
-body .content .startBack .startFront img {
+.startBack .startFront img {
   width: 300px;
   margin-top: 5%;
   padding-left: 2.5em;
 }
-body .content .startBack .startFront .logoComment {
+.startBack .startFront .logoComment {
   font-size: 1.5em;
   font-weight: 400;
   padding-left: 2.5rem;
 }
-body .content .startBack .startFront .callToAction {
+.startBack .startFront .callToAction {
   width: 100%;
   margin-top: 5%;
   padding-left: 2.5em;
 }
-body .content .startBack .startFront .callToAction .header {
+.startBack .startFront .callToAction .header {
   font-size: 2em;
   color: #49ACDC;
   font-weight: 800;
   margin-bottom: 2em;
 }
-body .content .startBack .startFront .callToAction div {
+.startBack .startFront .callToAction div {
   width: 300px;
   display: inline-flex;
   margin-bottom: 2em;
 }
-body .content .startBack .startFront .callToAction div img {
+.startBack .startFront .callToAction div img {
   width: 3em;
   float: left;
   margin: 0 5% 0 0;
   padding: 0;
 }
-body .content .startBack .startFront .callToAction div .comment {
+.startBack .startFront .callToAction div .comment {
   font-size: 1em;
   line-height: 2em;
   max-width: 250px;
 }
-body .content .startBack .startFront .callToAction .start {
+.startBack .startFront .callToAction .start {
   width: 300px;
   height: 80px;
   font-size: 2rem;
@@ -79,42 +59,42 @@ body .content .startBack .startFront .callToAction .start {
   float: right;
   margin-right: 2em;
 }
-body .content .startBack .startFront .callToAction .start:hover {
+.startBack .startFront .callToAction .start:hover {
   background: #04b4dc;
 }
-body .content .startBack .startFront .trackerContainer {
+.startBack .startFront .trackerContainer {
   padding: 5% 0 5%;
   width: 100%;
   border-top: 2px dotted black;
   margin-bottom: 200px;
 }
-body .content .startBack .startFront .trackerContainer .trackerHeader {
+.startBack .startFront .trackerContainer .trackerHeader {
   padding-left: 2.5rem;
   font-size: 1.5em;
 }
-body .content .startBack .startFront .trackerContainer .trackerComment {
+.startBack .startFront .trackerContainer .trackerComment {
   padding-left: 2.5rem;
   font-size: 1em;
   max-width: 600px;
 }
-body .content .startBack .parties {
+.startBack .parties {
   width: 300px;
   height: 100%;
   margin: 0 2em;
   display: inline-block;
   text-align: right;
 }
-body .content .startBack .parties img {
+.startBack .parties img {
   width: 150px;
   margin-top: 2em;
 }
-body .content .startBack .parties div {
+.startBack .parties div {
   width: 100%;
   display: inline-flex;
   flex-wrap: wrap;
   text-align: left;
 }
-body .content .startBack .parties div .vvd {
+.startBack .parties div .vvd {
   background: url("../img/vvd.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -124,12 +104,12 @@ body .content .startBack .parties div .vvd {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .vvd:hover {
+.startBack .parties div .vvd:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .pvda {
+.startBack .parties div .pvda {
   background: url("../img/pvda.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -139,12 +119,12 @@ body .content .startBack .parties div .pvda {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .pvda:hover {
+.startBack .parties div .pvda:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .pvv {
+.startBack .parties div .pvv {
   background: url("../img/pvv.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -154,12 +134,12 @@ body .content .startBack .parties div .pvv {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .pvv:hover {
+.startBack .parties div .pvv:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .sp {
+.startBack .parties div .sp {
   background: url("../img/sp.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -169,12 +149,12 @@ body .content .startBack .parties div .sp {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .sp:hover {
+.startBack .parties div .sp:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .cda {
+.startBack .parties div .cda {
   background: url("../img/cda.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -184,12 +164,12 @@ body .content .startBack .parties div .cda {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .cda:hover {
+.startBack .parties div .cda:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .d66 {
+.startBack .parties div .d66 {
   background: url("../img/d66.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -199,12 +179,12 @@ body .content .startBack .parties div .d66 {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .d66:hover {
+.startBack .parties div .d66:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .cu {
+.startBack .parties div .cu {
   background: url("../img/christenunie.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -214,12 +194,12 @@ body .content .startBack .parties div .cu {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .cu:hover {
+.startBack .parties div .cu:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .gl {
+.startBack .parties div .gl {
   background: url("../img/groenlinks.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -229,12 +209,12 @@ body .content .startBack .parties div .gl {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .gl:hover {
+.startBack .parties div .gl:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .sgp {
+.startBack .parties div .sgp {
   background: url("../img/sgp.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -244,12 +224,12 @@ body .content .startBack .parties div .sgp {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .sgp:hover {
+.startBack .parties div .sgp:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .pvdd {
+.startBack .parties div .pvdd {
   background: url("../img/pvdd.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -259,12 +239,12 @@ body .content .startBack .parties div .pvdd {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .pvdd:hover {
+.startBack .parties div .pvdd:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .vp {
+.startBack .parties div .vp {
   background: url("../img/50plus.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -274,12 +254,12 @@ body .content .startBack .parties div .vp {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .vp:hover {
+.startBack .parties div .vp:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .op {
+.startBack .parties div .op {
   background: url("../img/ondernemerspartij.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -289,12 +269,12 @@ body .content .startBack .parties div .op {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .op:hover {
+.startBack .parties div .op:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .vnl {
+.startBack .parties div .vnl {
   background: url("../img/vnl.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -304,12 +284,12 @@ body .content .startBack .parties div .vnl {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .vnl:hover {
+.startBack .parties div .vnl:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .denk {
+.startBack .parties div .denk {
   background: url("../img/denk.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -319,12 +299,12 @@ body .content .startBack .parties div .denk {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .denk:hover {
+.startBack .parties div .denk:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .nw {
+.startBack .parties div .nw {
   background: url("../img/nieuwewegen.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -334,12 +314,12 @@ body .content .startBack .parties div .nw {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .nw:hover {
+.startBack .parties div .nw:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .fvd {
+.startBack .parties div .fvd {
   background: url("../img/forumvoordemocratie.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -349,12 +329,12 @@ body .content .startBack .parties div .fvd {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .fvd:hover {
+.startBack .parties div .fvd:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .dbb {
+.startBack .parties div .dbb {
   background: url("../img/burgerbeweging.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -364,12 +344,12 @@ body .content .startBack .parties div .dbb {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .dbb:hover {
+.startBack .parties div .dbb:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .vzp {
+.startBack .parties div .vzp {
   background: url("../img/vrijzinnigepartij.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -379,12 +359,12 @@ body .content .startBack .parties div .vzp {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .vzp:hover {
+.startBack .parties div .vzp:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .pp {
+.startBack .parties div .pp {
   background: url("../img/piratenpartij.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -394,12 +374,12 @@ body .content .startBack .parties div .pp {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .pp:hover {
+.startBack .parties div .pp:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .artikel {
+.startBack .parties div .artikel {
   background: url("../img/artikel1.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -409,12 +389,12 @@ body .content .startBack .parties div .artikel {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .artikel:hover {
+.startBack .parties div .artikel:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .ns {
+.startBack .parties div .ns {
   background: url("../img/nietstemmers.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -424,12 +404,12 @@ body .content .startBack .parties div .ns {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .ns:hover {
+.startBack .parties div .ns:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .lp {
+.startBack .parties div .lp {
   background: url("../img/libertarischepartij.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -439,12 +419,12 @@ body .content .startBack .parties div .lp {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .lp:hover {
+.startBack .parties div .lp:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .lik {
+.startBack .parties div .lik {
   background: url("../img/lokaalindekamer.svg");
   background-repeat: no-repeat;
   background-color: white;
@@ -454,12 +434,12 @@ body .content .startBack .parties div .lik {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .lik:hover {
+.startBack .parties div .lik:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .gp {
+.startBack .parties div .gp {
   background: url("../img/geenpeil.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -469,12 +449,12 @@ body .content .startBack .parties div .gp {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .gp:hover {
+.startBack .parties div .gp:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .jl {
+.startBack .parties div .jl {
   background: url("../img/jezusleeft.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -484,12 +464,12 @@ body .content .startBack .parties div .jl {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .jl:hover {
+.startBack .parties div .jl:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .stemNL {
+.startBack .parties div .stemNL {
   background: url("../img/stemnl.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -499,12 +479,12 @@ body .content .startBack .parties div .stemNL {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .stemNL:hover {
+.startBack .parties div .stemNL:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .mens {
+.startBack .parties div .mens {
   background: url("../img/mensspirit.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -514,12 +494,12 @@ body .content .startBack .parties div .mens {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .mens:hover {
+.startBack .parties div .mens:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div .vdp {
+.startBack .parties div .vdp {
   background: url("../img/vdp.png");
   background-repeat: no-repeat;
   background-color: white;
@@ -529,121 +509,40 @@ body .content .startBack .parties div .vdp {
   transition: 0.1s ease-out;
   cursor: pointer;
 }
-body .content .startBack .parties div .vdp:hover {
+.startBack .parties div .vdp:hover {
   transform: scale(2, 2);
   z-index: 2;
   border: 1px solid black;
 }
-body .content .startBack .parties div p {
+.startBack .parties div p {
   margin: 2rem 0;
   color: white;
   width: 100%;
   font-size: 1.5em;
 }
-body .content .startBack .parties div .w3-badge {
+.startBack .parties div .w3-badge {
   margin: 0 1rem 1rem 0;
 }
+
 @media (max-width: 1160px) {
-  body .content .startBack {
+  .startBack {
     background: none;
     max-width: 900px;
     margin: 0 auto;
   }
-  body .content .startBack .startFront {
+  .startBack .startFront {
     max-width: 900px;
     margin: 0 auto;
   }
-  body .content .startBack .startFront .trackerContainer {
+  .startBack .startFront .trackerContainer {
     margin-bottom: 0;
   }
-  body .content .startBack .parties {
+  .startBack .parties {
     width: 900px;
     max-height: 500px;
     margin: 0 auto;
     background: #04b4dc;
   }
 }
-body .content .poll {
-  min-height: 850px;
-  width: 1250px;
-  margin: 0 auto;
-  background: white;
-  display: none;
-}
-body .content .poll .progressBar {
-  height: 10px;
-  width: 3.3%;
-  background: #04b4dc;
-  margin-bottom: 2em;
-}
-body .content .poll .back {
-  padding: 0.5em;
-  background: #cccccc;
-  opacity: 0.8;
-  border-radius: 5em;
-  font-size: 1.5em;
-  margin-left: 1em;
-  cursor: pointer;
-  transition: 0.1s ease-out;
-}
-body .content .poll .back:hover {
-  margin-left: 0.75em;
-}
-body .content .poll .contentWrapper {
-  min-height: 850px;
-  width: 1000px;
-  margin: 0 auto;
-  padding-top: 2em;
-}
-body .content .poll .contentWrapper .statementWrapper {
-  max-width: 700px;
-  margin-bottom: 7.5em;
-}
-body .content .poll .contentWrapper .statementWrapper #statement {
-  font-size: 2.5em;
-  color: #04b4dc;
-  margin-bottom: 1.5em;
-  font-weight: bold;
-}
-body .content .poll .contentWrapper .statementWrapper #comment {
-  font-size: 2em;
-  font-weight: lighter;
-}
-body .content .poll .contentWrapper .statementControls {
-  margin-bottom: 7.5em;
-}
-body .content .poll .contentWrapper .statementControls button {
-  width: 200px;
-  height: 80px;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  background: black;
-  color: white;
-  margin-right: 1em;
-}
-body .content .poll .contentWrapper .statementControls button:hover {
-  background: #04b4dc;
-}
-body .content .poll .contentWrapper .statementControls p {
-  color: #CCCCCC;
-  display: inline-block;
-  margin-left: 3em;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-body .content .poll .contentWrapper .statementControls p span {
-  transition: 0.1s ease-out;
-}
-body .content .poll .contentWrapper .statementControls p:hover span {
-  margin-left: 0.5em;
-}
-body .content .poll .contentWrapper .opinion p {
-  cursor: pointer;
-  font-size: 2em;
-}
-body .content .poll .contentWrapper .opinion p span {
-  color: #04b4dc;
-  margin-right: 1em;
-}
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=landing.css.map */
