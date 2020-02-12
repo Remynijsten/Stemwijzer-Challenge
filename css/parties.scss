@@ -1,0 +1,127 @@
+@mixin partyButton{
+				background-repeat: no-repeat;
+				background-color: white;
+				height: 50px;
+				width: 50px;
+				background-size: cover;
+				transition: 0.1s ease-out;
+				cursor: pointer;
+				&:hover{
+					transform: scale(2, 2);
+					z-index: 2;
+					border: 1px solid black;
+				}
+			}
+
+.vvd{
+	background: url("../img/vvd.svg");
+	@include partyButton;
+}
+.pvda{
+	background: url("../img/pvda.svg");
+	@include partyButton;
+}
+.pvv{
+	background: url("../img/pvv.svg");
+	@include partyButton;
+}
+.sp{
+	background: url("../img/sp.svg");
+	@include partyButton;
+}
+.cda{
+	background: url("../img/cda.svg");
+	@include partyButton;
+}
+.d66{
+	background: url("../img/d66.svg");
+	@include partyButton;
+}
+.cu{
+	background: url("../img/christenunie.svg");
+	@include partyButton;
+}
+.gl{
+	background: url("../img/groenlinks.svg");
+	@include partyButton;
+}
+.sgp{
+	background: url("../img/sgp.svg");
+	@include partyButton;
+}
+.pvdd{
+	background: url("../img/pvdd.svg");
+	@include partyButton;
+}
+.vp{
+	background: url("../img/50plus.svg");
+	@include partyButton;
+}
+.op{
+	background: url("../img/ondernemerspartij.png");
+	@include partyButton;
+}
+.vnl{
+	background: url("../img/vnl.svg");
+	@include partyButton;
+}
+.denk{
+	background: url("../img/denk.svg");
+	@include partyButton;
+}
+.nw{
+	background: url("../img/nieuwewegen.png");
+	@include partyButton;
+}
+.fvd{
+	background: url("../img/forumvoordemocratie.png");
+	@include partyButton;
+}
+.dbb{
+	background: url("../img/burgerbeweging.png");
+	@include partyButton;
+}
+.vzp{
+	background: url("../img/vrijzinnigepartij.png");
+	@include partyButton;
+}
+.pp{
+	background: url("../img/piratenpartij.svg");
+	@include partyButton;
+}
+.artikel{
+	background: url("../img/artikel1.png");
+	@include partyButton;
+}
+.ns{
+	background: url("../img/nietstemmers.svg");
+	@include partyButton;
+}
+.lp{
+	background: url("../img/libertarischepartij.svg");
+	@include partyButton;
+}
+.lik{
+	background: url("../img/lokaalindekamer.svg");
+	@include partyButton;
+}
+.gp{
+	background: url("../img/geenpeil.png");
+	@include partyButton;
+}
+.jl{
+	background: url("../img/jezusleeft.png");
+	@include partyButton;
+}
+.stemNL{
+	background: url("../img/stemnl.png");
+	@include partyButton;
+}
+.mens{
+	background: url("../img/mensspirit.png");
+	@include partyButton;
+}
+.vdp{
+	background: url("../img/vdp.png");
+	@include partyButton;
+}
