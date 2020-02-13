@@ -637,13 +637,40 @@ body .content .poll .contentWrapper .statementControls p span {
 body .content .poll .contentWrapper .statementControls p:hover span {
   margin-left: 0.5em;
 }
-body .content .poll .contentWrapper .opinion p {
+body .content .poll .contentWrapper .opinion p, body .content .poll .contentWrapper #opinionModal div .modalHeader div p {
   cursor: pointer;
   font-size: 2em;
 }
-body .content .poll .contentWrapper .opinion p span {
+body .content .poll .contentWrapper .opinion p span, body .content .poll .contentWrapper #opinionModal div .modalHeader div p span {
   color: #04b4dc;
   margin-right: 1em;
+}
+body .content .poll .contentWrapper #opinionModal div .modalHeader {
+  background: #CCCCCC;
+  color: white;
+}
+body .content .poll .contentWrapper #opinionModal div .modalHeader #closeModal {
+  width: 50px;
+  height: 45px;
+  font-size: 3em;
+  line-height: 30px;
+}
+body .content .poll .contentWrapper #opinionModal div .modalContent {
+  max-width: 100%;
+  padding: 2em 1em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+body .content .poll .contentWrapper #opinionModal div .modalContent div {
+  width: 275px;
+  display: inline-block;
+}
+body .content .poll .contentWrapper #opinionModal div .modalContent div p {
+  font-weight: bold;
+  font-size: 1.5em;
+  border-bottom: 2px solid black;
+  padding-left: 0.5em;
 }
 
 /*# sourceMappingURL=style.css.map */

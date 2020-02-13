@@ -106,6 +106,7 @@
 						</div>
 					</div>
 
+					<!-- Button Wrapper -->
 					<div class="statementControls">
 						<button class="w3-btn eens">EENS</button>
 						<button class="w3-btn geen">GEEN VAN BEIDE</button>
@@ -113,26 +114,34 @@
 						<p>Sla deze vraag over <span><i class="fas fa-arrow-right right"></i></span></p>
 					</div>
 
+					<!-- Opinion Open Text -->
 					<div class="opinion">
 						<p onclick="toggleModal('open')"><span><i class="fas fa-user-tie"></i></span>Wat vinden de partijen?</p>
 					</div>
 
+					<!-- Opinion Modal -->
 					<div id="opinionModal" class="w3-modal">
 						<div class="w3-modal-content w3-animate-top w3-card-4">
-							<header class="w3-container w3-teal"> 
-
-							<span onclick="toggleModal()" class="w3-button w3-display-topright">&times;</span>
-								<h2>Modal Header</h2>
+							<header class="w3-container modalHeader">
+								<span id="closeModal" onclick="toggleModal()" class="w3-button w3-display-topright">&times;</span>
+								<div class="opinion">
+									<p><span><i class="fas fa-user-tie"></i></span>Wat vinden de partijen?</p>
+								</div>
+								
 							</header>
 
-							<div class="w3-container">
-								<p>Some text..</p>
-								<p>Some text..</p>
+							<div class="w3-container modalContent">
+								<div class="w3-container partyOpinion">
+									<p>Eens</p>
+								</div>
+								<div class="w3-container partyOpinion">
+									<p>Geen van beide</p>
+								</div>
+								<div class="w3-container partyOpinion">
+									<p>Oneens</p>
+								</div>
 							</div>
 
-							<footer class="w3-container w3-teal">
-								<p>Modal Footer</p>
-							</footer>
 						</div>
 					</div>
 

@@ -82,5 +82,39 @@ $lightblue: #04b4dc;
 	    		}
 	    	}
 	    }
+	    #opinionModal{
+	    	div{
+	    		.modalHeader{
+	    			background: #CCCCCC;
+	    			color: white;
+	    			#closeModal{
+						width: 50px;
+						height: 45px;
+						font-size: 3em;
+						line-height: 30px;
+					}
+	    			div{
+	    				@extend .opinion;
+	    			}
+	    		}
+	    		.modalContent{
+					max-width: 100%;
+					padding: 2em 1em;
+					display: flex;
+					flex-wrap: nowrap;
+					justify-content: center;
+					div{
+						width: 275px;
+						display: inline-block;
+						p{
+							font-weight: bold;
+							font-size: 1.5em;
+							border-bottom: 2px solid black;
+							padding-left: 0.5em;
+						}
+					}
+	    		}
+	    	}
+	    }
     } 
 }
