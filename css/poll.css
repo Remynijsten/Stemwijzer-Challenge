@@ -7,7 +7,7 @@
 }
 .poll .progressBar {
   height: 10px;
-  width: 3.3%;
+  width: 0%;
   background: #04b4dc;
   margin-bottom: 2em;
 }
@@ -43,6 +43,7 @@
 .poll .contentWrapper .statementWrapper #comment {
   font-size: 2em;
   font-weight: lighter;
+  height: 200px;
 }
 .poll .contentWrapper .statementControls {
   margin-bottom: 7.5em;

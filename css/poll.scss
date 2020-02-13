@@ -8,7 +8,7 @@ $lightblue: #04b4dc;
     display: none;
     .progressBar{
     	height: 10px;
-    	width: 3.3%;
+    	width: 0%;
     	background: $lightblue;
     	margin-bottom: 2em;
     }
@@ -42,6 +42,7 @@ $lightblue: #04b4dc;
 		    #comment{
 				font-size: 2em;
 				font-weight: lighter;
+				height: 200px;
 		    }
 	    }   
 	    .statementControls{

@@ -4,6 +4,7 @@ const poll = document.getElementsByClassName("poll")[0];
 const progress = document.getElementsByClassName("progress")[0];
 
 var questionIndex = 0;
+var answers = [];
 
 start.onclick = function(){
 	startBack.style.display = "none";
@@ -50,7 +51,7 @@ function seedOpinion(index){
 }
 
 function seedStatement(index){
-	statement.innerHTML = "1. " + subjects[index]["title"];
+	statement.innerHTML = questionIndex+1 + ". " + subjects[index]["title"];
 	comment.innerHTML = subjects[index]["statement"];
 
 	for(i=0;i<3;i++){
@@ -74,4 +75,30 @@ function openAccordion(party){
 	}
 }
 
+function choiceSelect(choice){
+	if (questionIndex != 29){
+		var increase = (questionIndex + 1) * 3.3;
+		document.getElementById("progressBar").style.width = increase + "%";
 
+		answers[questionIndex] = choice;
+		questionIndex++;
+		seedStatement(questionIndex);
+	}else{
+		document.getElementById("progressBar").style.width = "100%";
+	}
+}
+
+function back(){
+	answers[questionIndex] = "";
+	if (questionIndex != 0){
+		var increase = (questionIndex) * 3.3;
+		document.getElementById("progressBar").style.width = increase + "%";
+
+		questionIndex--;
+		seedStatement(questionIndex);
+	}else if(questionIndex == 0){
+		document.getElementById("progressBar").style.width = "0%";
+		startBack.style.display = "block";
+		poll.style.display = "none";
+	}
+}

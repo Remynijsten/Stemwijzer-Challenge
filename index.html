@@ -83,11 +83,11 @@
 			<!-- Poll -->
 			<div class="w3-container poll">
 				<!-- Progress Bar -->
-				<div class="w3-light-grey w3-small">
-					<div class="w3-container progressBar"></div>
+				<div class="w3-light-grey w3-small pbWrapper">
+					<div class="w3-container progressBar" id="progressBar"></div>
 				</div>
 				<!-- Back Button -->
-				<span class="back"><i class="fas fa-arrow-left"></i></span>
+				<span onclick="back()" class="back"><i class="fas fa-arrow-left"></i></span>
 
 				<!-- Content Wrapper -->
 				<div class="contentWrapper">
@@ -108,10 +108,10 @@
 
 					<!-- Button Wrapper -->
 					<div class="statementControls">
-						<button class="w3-btn eens">EENS</button>
-						<button class="w3-btn geen">GEEN VAN BEIDE</button>
-						<button class="w3-btn oneens">ONEENS</button>
-						<p>Sla deze vraag over <span><i class="fas fa-arrow-right right"></i></span></p>
+						<button onclick="choiceSelect('EENS')" class="w3-btn">EENS</button>
+						<button onclick="choiceSelect('GEEN')" class="w3-btn">GEEN VAN BEIDE</button>
+						<button onclick="choiceSelect('ONEENS')" class="w3-btn">ONEENS</button>
+						<p onclick="choiceSelect('SKIP')">Sla deze vraag over <span><i class="fas fa-arrow-right right"></i></span></p>
 					</div>
 
 					<!-- Opinion Open Text -->
