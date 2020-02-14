@@ -31,7 +31,8 @@
   padding-top: 2em;
 }
 .poll .contentWrapper .statementWrapper {
-  max-width: 700px;
+  max-width: 800px;
+  height: 250px;
   margin-bottom: 7.5em;
 }
 .poll .contentWrapper .statementWrapper #statement {
@@ -107,6 +108,48 @@
   font-size: 1.5em;
   border-bottom: 2px solid black;
   padding-left: 0.5em;
+}
+.poll .important {
+  width: 1250px;
+  margin: 0 auto;
+  max-height: 650px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background: #CCCCCC;
+  display: none;
+  align-items: center;
+  padding: 1em 7em;
+}
+.poll .important .importantStatement {
+  border-bottom: 1px solid #CCCCCC;
+  height: 50px;
+  padding: 0 1em;
+}
+.poll .important .importantStatement .tooltip .tooltiptext {
+  visibility: hidden;
+  min-width: 100px;
+  max-width: 200px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  position: absolute;
+  display: inline-flex;
+  line-height: 1.5em;
+}
+.poll .important .continue {
+  width: 200px;
+  height: 80px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  background: black;
+  color: white;
+  margin-right: 1em;
+}
+.poll .important .continue:hover {
+  background: #04b4dc;
 }
 
 /*# sourceMappingURL=poll.css.map */

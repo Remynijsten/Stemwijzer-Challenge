@@ -5,6 +5,7 @@ const progress = document.getElementsByClassName("progress")[0];
 
 var questionIndex = 0;
 var answers = [];
+var important = [];
 
 start.onclick = function(){
 	startBack.style.display = "none";
@@ -85,20 +86,127 @@ function choiceSelect(choice){
 		seedStatement(questionIndex);
 	}else{
 		document.getElementById("progressBar").style.width = "100%";
+		questionIndex++;
+		statement.innerHTML = "Zijn er onderwerpen die u extra belangrijk vindt?";
+		comment.innerHTML = "Aangevinkte stellingen tellen extra mee bij het berekenen van het resulaat.";
+		document.getElementsByClassName("statementControls")[0].style.display = "none";
+		document.getElementsByClassName("opinion")[0].style.display = "none";
+		document.getElementsByClassName("important")[0].style.display = "flex";
+		document.getElementsByClassName("statementWrapper")[0].style.marginBottom = "0";
+		document.getElementsByClassName("contentWrapper")[0].style.minHeight = "200px";
+
 	}
 }
 
 function back(){
 	answers[questionIndex] = "";
-	if (questionIndex != 0){
-		var increase = (questionIndex) * 3.3;
-		document.getElementById("progressBar").style.width = increase + "%";
 
-		questionIndex--;
-		seedStatement(questionIndex);
-	}else if(questionIndex == 0){
-		document.getElementById("progressBar").style.width = "0%";
-		startBack.style.display = "block";
-		poll.style.display = "none";
+	switch(questionIndex) {
+		case 0:
+			document.getElementById("progressBar").style.width = "0%";
+			startBack.style.display = "block";
+			poll.style.display = "none";
+			break;
+		case 30:
+			questionIndex--;
+			seedStatement(questionIndex);
+			document.getElementsByClassName("statementControls")[0].style.display = "block";
+			document.getElementsByClassName("opinion")[0].style.display = "block";
+			document.getElementsByClassName("important")[0].style.display = "none";
+			document.getElementsByClassName("statementWrapper")[0].style.marginBottom = "7.5em";
+			document.getElementsByClassName("contentWrapper")[0].style.minHeight = "850px";
+
+
+
+
+			break;
+		default:
+			var increase = (questionIndex) * 3.3;
+			document.getElementById("progressBar").style.width = increase + "%";
+
+			questionIndex--;
+			seedStatement(questionIndex);
+			break;
+	}
+}
+
+for(x=0;x<30;x++){
+	var wrapper = document.createElement("div");
+	wrapper.classList.add("w3-container", "importantStatement");
+	wrapper.style.width = "300px";
+	wrapper.style.lineHeight = "50px";
+	wrapper.style.borderBottom = "1px solid black";
+	wrapper.style.cursor = "pointer";
+	wrapper.setAttribute("data-value", subjects[x]["title"]);
+	wrapper.setAttribute("onclick", "saveImportant(this)");
+
+	var span = document.createElement("span");
+	span.innerHTML = "<i class='far fa-square'></i>";
+	span.style.float = "left";
+	span.style.marginRight = "1em";
+	span.style.fontSize = "1em";
+
+	var text = document.createElement("p");
+	text.style.display = "inline-block";
+	var node = document.createTextNode(subjects[x]["title"]);
+	text.appendChild(node);
+
+	var question = document.createElement("i");
+	question.classList.add("tooltip", "fas", "fa-question-circle", "w3-animate-opacity");
+	question.style.display = "inline-block";
+	question.style.float = "right";
+	question.style.paddingTop = "1.5em";
+
+	question.setAttribute("data-value", x);
+	question.setAttribute("onmouseenter", "showTooltip(this)");
+	question.setAttribute("onmouseout", "hideTooltip(this)");
+
+	var tooltip = document.createElement("p");
+	tooltip.classList.add("tooltiptext");
+	tooltip.innerHTML = subjects[x]["statement"];
+
+	question.appendChild(tooltip);
+
+
+
+
+	wrapper.appendChild(span);
+	wrapper.appendChild(text);
+	wrapper.appendChild(question);
+	document.getElementsByClassName("important")[0].appendChild(wrapper);
+}	
+	var btn = document.createElement("button");
+	btn.innerHTML = "GA VERDER";
+	btn.classList.add("continue");
+	btn.style.margin = "1em";
+	btn.style.width = "300px;";
+	btn.style.cursor = "pointer";
+	document.getElementsByClassName("important")[0].appendChild(btn);
+
+
+function showTooltip(index){
+	setTimeout(function(){
+		document.getElementsByClassName("tooltiptext")[index.getAttribute("data-value")].style.visibility = "visible";
+	}, 500);
+}
+function hideTooltip(index){
+	setTimeout(function(){
+		document.getElementsByClassName("tooltiptext")[index.getAttribute("data-value")].style.visibility = "hidden";
+	}, 500);
+}
+
+function saveImportant(statement){
+	var elem = statement.firstChild.firstChild;
+	statement.classList.toggle("selected");
+
+	if(statement.classList.contains('selected') ){
+		elem.classList.remove("far", "fa-square");
+		elem.classList.add("far", "fa-check-square"); 
+		statement.firstChild.nextSibling.style.color = "#04b4dc";
+		
+	}else{
+		elem.classList.remove("far", "fa-check-square"); 
+		elem.classList.add("far", "fa-square");
+		statement.firstChild.nextSibling.style.color = "black";
 	}
 }

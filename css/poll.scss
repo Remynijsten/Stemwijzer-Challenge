@@ -1,4 +1,18 @@
 $lightblue: #04b4dc;
+@mixin button{
+	width: 200px;
+	height: 80px;
+	font-size: 1.2rem;
+	border-radius: 10px;
+	background: black;
+	color: white;
+	margin-right: 1em;
+	&:hover{
+		background: $lightblue;
+	}
+}
+
+
 
 .poll{
     min-height: 850px;
@@ -31,7 +45,8 @@ $lightblue: #04b4dc;
 	    margin: 0 auto;
 	    padding-top: 2em;
 	    .statementWrapper{
-	    	max-width: 700px;
+	    	max-width: 800px;
+	    	height: 250px;
     	    margin-bottom: 7.5em;
 	    	#statement{
 				font-size: 2.5em;
@@ -83,6 +98,14 @@ $lightblue: #04b4dc;
 	    		}
 	    	}
 	    }
+	   
+
+
+
+
+
+
+
 	    #opinionModal{
 	    	div{
 	    		.modalHeader{
@@ -117,5 +140,41 @@ $lightblue: #04b4dc;
 	    		}
 	    	}
 	    }
-    } 
+    }
+
+    .important{
+		width: 1250px;
+		margin: 0 auto;
+		max-height: 650px;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		background: #CCCCCC;
+		display: none;
+		align-items: center;
+		padding: 1em 7em;
+		.importantStatement{
+			border-bottom: 1px solid #CCCCCC;
+			height: 50px;
+			padding: 0 1em;
+			.tooltip{
+				.tooltiptext{
+					visibility: hidden;
+				    min-width: 100px;
+				    max-width: 200px;
+					background-color: rgba(0, 0, 0, 0.85);
+					color: white;
+					text-align: center;
+					border-radius: 10px;
+					padding: 5px 0;
+					position: absolute;
+					display: inline-flex;
+					line-height: 1.5em;
+				}
+			}
+		}
+		.continue{
+			@include button;
+		}
+    }
 }
