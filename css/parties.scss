@@ -1,17 +1,17 @@
 @mixin partyButton{
-				background-repeat: no-repeat;
-				background-color: white;
-				height: 50px;
-				width: 50px;
-				background-size: cover;
-				transition: 0.1s ease-out;
-				cursor: pointer;
-				&:hover{
-					transform: scale(2, 2);
-					z-index: 2;
-					border: 1px solid black;
-				}
-			}
+	background-repeat: no-repeat;
+	background-color: white;
+	height: 50px;
+	width: 50px;
+	background-size: cover;
+	transition: 0.1s ease-out;
+	cursor: pointer;
+	&:hover{
+		transform: scale(2, 2);
+		z-index: 2;
+		border: 1px solid black;
+	}
+}
 
 .vvd{
 	background: url("../img/vvd.svg");

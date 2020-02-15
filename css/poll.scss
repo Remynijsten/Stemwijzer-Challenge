@@ -8,7 +8,7 @@ $lightblue: #04b4dc;
 	color: white;
 	margin-right: 1em;
 	&:hover{
-		background: $lightblue;
+		background: $lightblue!important;
 	}
 }
 
@@ -28,7 +28,7 @@ $lightblue: #04b4dc;
     }
     .back{
 	    padding: 0.5em;
-	    background: #cccccc;
+	    background: lightgrey;
 	    opacity: 0.8;
 	    border-radius: 5em;
 	    font-size: 1.5em;
@@ -51,11 +51,11 @@ $lightblue: #04b4dc;
 	    	#statement{
 				font-size: 2.5em;
 				color: $lightblue;
-				margin-bottom: 1.5em;
+				margin-bottom: 0.5em;
 				font-weight: bold;
 		    }
 		    #comment{
-				font-size: 2em;
+				font-size: 1.25em;
 				font-weight: lighter;
 				height: 200px;
 		    }
@@ -142,7 +142,7 @@ $lightblue: #04b4dc;
 	    }
     }
 
-    .important{
+    .selectBoxes{
 		width: 1250px;
 		margin: 0 auto;
 		max-height: 650px;
@@ -153,7 +153,7 @@ $lightblue: #04b4dc;
 		display: none;
 		align-items: center;
 		padding: 1em 7em;
-		.importantStatement{
+		.selectRow{
 			border-bottom: 1px solid #CCCCCC;
 			height: 50px;
 			padding: 0 1em;

@@ -13,7 +13,7 @@
 }
 .poll .back {
   padding: 0.5em;
-  background: #cccccc;
+  background: lightgrey;
   opacity: 0.8;
   border-radius: 5em;
   font-size: 1.5em;
@@ -38,11 +38,11 @@
 .poll .contentWrapper .statementWrapper #statement {
   font-size: 2.5em;
   color: #04b4dc;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.5em;
   font-weight: bold;
 }
 .poll .contentWrapper .statementWrapper #comment {
-  font-size: 2em;
+  font-size: 1.25em;
   font-weight: lighter;
   height: 200px;
 }
@@ -109,7 +109,7 @@
   border-bottom: 2px solid black;
   padding-left: 0.5em;
 }
-.poll .important {
+.poll .selectBoxes {
   width: 1250px;
   margin: 0 auto;
   max-height: 650px;
@@ -121,12 +121,12 @@
   align-items: center;
   padding: 1em 7em;
 }
-.poll .important .importantStatement {
+.poll .selectBoxes .selectRow {
   border-bottom: 1px solid #CCCCCC;
   height: 50px;
   padding: 0 1em;
 }
-.poll .important .importantStatement .tooltip .tooltiptext {
+.poll .selectBoxes .selectRow .tooltip .tooltiptext {
   visibility: hidden;
   min-width: 100px;
   max-width: 200px;
@@ -139,7 +139,7 @@
   display: inline-flex;
   line-height: 1.5em;
 }
-.poll .important .continue {
+.poll .selectBoxes .continue {
   width: 200px;
   height: 80px;
   font-size: 1.2rem;
@@ -148,8 +148,8 @@
   color: white;
   margin-right: 1em;
 }
-.poll .important .continue:hover {
-  background: #04b4dc;
+.poll .selectBoxes .continue:hover {
+  background: #04b4dc !important;
 }
 
 /*# sourceMappingURL=poll.css.map */

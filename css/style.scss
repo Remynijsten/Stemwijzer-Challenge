@@ -8,6 +8,25 @@
 	padding: 0;
 }
 
+#error{
+	position: absolute;
+	div{
+		width: 500px;
+		min-height: 300px;
+		background: white;
+		border-radius: 15px;
+		text-align: center;
+		font-size: 2.5em;
+		padding: 1em 0 1em;
+		header{
+			margin-bottom: 1em;
+		}
+		img{
+
+		}
+	}
+}
+
 body{
 	background: url("../img/bg.jpg") no-repeat center fixed;
 	background-size: cover;
@@ -20,6 +39,8 @@ body{
 		@import 'landing.scss';
 
 		@import 'poll.scss';
+
+		@import 'result.scss';
 	}
 }
 

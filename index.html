@@ -9,6 +9,15 @@
 	<meta charset="utf-8">
 </head>
 	<body>
+		<div class="w3-modal w3-animate-top" id="error">
+			<div class="w3-modal-content w3-animate-top w3-card-4">
+				<header class="w3-container" id="errorContent"> 
+					
+				</header>
+				<img src="img/error.png" alt="error character">
+			</div>
+		</div>
+
 		<!-- Content Wrapper -->
 		<section class="content">
 
@@ -108,10 +117,10 @@
 
 					<!-- Button Wrapper -->
 					<div class="statementControls">
-						<button onclick="choiceSelect('EENS')" class="w3-btn">EENS</button>
-						<button onclick="choiceSelect('GEEN')" class="w3-btn">GEEN VAN BEIDE</button>
-						<button onclick="choiceSelect('ONEENS')" class="w3-btn">ONEENS</button>
-						<p onclick="choiceSelect('SKIP')">Sla deze vraag over <span><i class="fas fa-arrow-right right"></i></span></p>
+						<button onclick="next('EENS')" id="EENS" class="w3-btn">EENS</button>
+						<button onclick="next('GEEN')" id="GEEN" class="w3-btn">GEEN VAN BEIDE</button>
+						<button onclick="next('ONEENS')" id="ONEENS" class="w3-btn">ONEENS</button>
+						<p onclick="next('SKIP')">Sla deze vraag over <span><i class="fas fa-arrow-right right"></i></span></p>
 					</div>
 
 					<!-- Opinion Open Text -->
@@ -148,11 +157,57 @@
 				</div>
 
 				<!-- Extra Important Statements -->
-				<div class="important">
+				<div class="selectBoxes">
 				</div>
+
+				<div class="results">
+					<div class="podium">
+						<img class="resultImg" src="" alt="">
+						
+						<img class="pedestal" src="img/pedestal.svg" alt="stage pedestal"></img>
+						<div class="w3-light-grey barContainer">
+						  <div class="w3-container w3-animate-opacity scoreBar" ></div>
+						</div>
+
+						<h4 class="resultHeader"></h4>
+						<p class="resultPercent"></p>
+						<p class="resultComment"></p>
+					</div>
+					
+
+					<div class="podium">
+						<img class="resultImg" src="" alt="">
+						
+						<img class="pedestal" src="img/pedestal.svg" alt="stage pedestal"></img>
+						<div class="w3-light-grey barContainer">
+						  <div class="w3-container w3-animate-opacity scoreBar" ></div>
+						</div>
+						
+						<h4 class="resultHeader"></h4>
+						<p class="resultPercent"></p>
+						<p class="resultComment"></p>
+					</div>
+
+					<div class="podium">
+						<img class="resultImg" src="" alt="">
+						<img class="pedestal" src="img/pedestal.svg" alt="stage pedestal"></img>
+						<div class="w3-light-grey barContainer">
+						  <div class="w3-container w3-animate-opacity scoreBar" ></div>
+						</div>
+
+						<h4 class="resultHeader"></h4>
+						<p class="resultPercent"></p>
+						<p class="resultComment"></p>
+					</div>
+
+				</div>
+				
 
 
 			</div>
+			
+
+
 		</section>
 
 		<script src="http://stemwijzer.dvc-icta.nl/data.js"></script>
