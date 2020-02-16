@@ -3,7 +3,7 @@ const startBack = document.getElementsByClassName("startBack")[0];
 const poll = document.getElementsByClassName("poll")[0];
 const progress = document.getElementsByClassName("progress")[0];
 
-var questionIndex = 28;
+var questionIndex = 0;
 var answers = {};
 var important = [];
 var score = {
@@ -13,7 +13,7 @@ var score = {
 	"GroenLinks" : 0,
 	"Partij voor de Dieren" : 0,
 	"50Plus" : 0,
-	"Voor Nederland" : 0,
+	"VNL" : 0,
 	"Nieuwe Wegen" : 0,
 	"Forum voor Democratie" : 0,
 	"De Burger Beweging" : 0,
@@ -31,15 +31,16 @@ var score = {
 	"DENK" : 0,
 	"Artikel 1" : 0
 };
+
 var selectParties = [];
+answers[30] = [] ;
+answers[31] = [];
 
 start.onclick = function(){
 	startBack.style.display = "none";
 	poll.style.display = "block";
 	seedStatement(questionIndex);
 }
-
-console.log(subjects);
 
 function toggleModal(config){
 	config == "open" ? opinionModal.style.display='block' : opinionModal.style.display='none' ;
@@ -152,6 +153,7 @@ function back(){
 		break;
 
 		case 31:
+
 			statement.innerHTML = "Zijn er onderwerpen die u extra belangrijk vindt?";
 			comment.innerHTML = "Aangevinkte stellingen tellen extra mee bij het berekenen van het resulaat.";
 			document.getElementsByClassName("statementControls")[0].style.display = "none";
@@ -165,8 +167,18 @@ function back(){
 				node.removeChild(node.firstChild);
 			}
 
-			seedImportant();
+
 			questionIndex--;
+			seedImportant();
+		break;
+
+			case 32:
+
+			document.getElementsByClassName("selectBoxes")[0].style.display = "flex";
+			document.getElementsByClassName("contentWrapper")[0].style.display = "block";
+			document.getElementsByClassName("results")[0].style.display = "none";
+
+			questionIndex--;	
 		break;
 
 		default:
@@ -227,7 +239,6 @@ function next(choice){
 				break;
 
 				case "none":
-					console.log(questionIndex, answers[questionIndex]);
 					answers[questionIndex] == "GEEN" ?
 					score[subjects[questionIndex]["parties"][x]["name"]]++ : "";
 				break;
@@ -247,11 +258,9 @@ function next(choice){
 		document.getElementsByClassName("contentWrapper")[0].style.minHeight = "200px";
 		seedImportant();
 
-
 		break;
 
 		case 30:
-		answers[questionIndex] = important;
 		questionIndex++;
 
 		statement.innerHTML = "Welke partijen wilt u meenemen in het resultaat?";
@@ -274,29 +283,16 @@ function next(choice){
 				error.style.display = "none";
 			}, 1500);
 
+
+
 		}else{
 			answers[questionIndex] = selectParties;
 			document.getElementsByClassName("selectBoxes")[0].style.display = "none";
 			document.getElementsByClassName("contentWrapper")[0].style.display = "none";
 			document.getElementsByClassName("results")[0].style.display = "block";
-
+			questionIndex++;
 			seedResults();
 		}
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		break;
 
 		default:
@@ -388,7 +384,11 @@ function seedImportant(){
 		tooltip.classList.add("tooltiptext", "w3-animate-opacity");
 		tooltip.innerHTML = subjects[x]["statement"];
 
-		
+		if(answers[30].includes(subjects[x]["title"])){
+			wrapper.classList.add('selected');
+			text.style.color = "#04b4dc";
+			span.innerHTML = "<i class='far fa-check-square'></i>";
+		}
 
 		question.appendChild(tooltip);
 
@@ -415,16 +415,43 @@ function saveImportant(statement){
 		elem.classList.add("far", "fa-check-square"); 
 		statement.firstChild.nextSibling.style.color = "#04b4dc";
 		important.push(statement.firstChild.nextSibling.innerHTML);
+
+		for(var i = 0; i <= important.length ; i++){
+			for(var x = 0; x < 30; x++){
+				if(important[i] == subjects[x]['title']){
+					for (var a = 0; a < 23; a++){
+						if(subjects[x]['parties'][a]['position'] == "pro"){
+							score[subjects[x]['parties'][a]['name']]++;
+						}
+					}
+				}
+			}
+		}
+
 	}else{
 		elem.classList.remove("far", "fa-check-square"); 
 		elem.classList.add("far", "fa-square");
 		statement.firstChild.nextSibling.style.color = "black";
 
-		var index = selectBoxes.indexOf(statement.firstChild.nextSibling.innerHTML);
+		var index = important.indexOf(statement.firstChild.nextSibling.innerHTML);
 		if (index > -1) {
-		  selectBoxes.splice(index, 1);
+			var removed = important.splice(index, 1);
+		}
+
+		for(var i = 0; i <= removed.length ; i++){
+			for(var x = 0; x < 30; x++){
+				if(removed[i] == subjects[x]['title']){
+					for (var a = 0; a < 23; a++){
+						if(subjects[x]['parties'][a]['position'] == "pro"){
+							score[subjects[x]['parties'][a]['name']]--;
+						}
+					}
+				}
+			}
 		}
 	}
+
+	answers[questionIndex] = important;
 }
 
 function seedParties(){
@@ -440,6 +467,7 @@ function seedParties(){
 		wrapper.setAttribute("onclick", "saveParties(this)");
 
 		var span = document.createElement("span");
+
 		span.innerHTML = "<i class='far fa-square'></i>";
 		span.style.float = "left";
 		span.style.marginRight = "1em";
@@ -448,8 +476,14 @@ function seedParties(){
 		var text = document.createElement("p");
 		text.style.display = "inline-block";
 		var node = document.createTextNode(key);
-		text.appendChild(node);
 
+		if(answers[31].includes(key)){
+			wrapper.classList.add('selected');
+			text.style.color = "#04b4dc";
+			span.innerHTML = "<i class='far fa-check-square'></i>";
+		}
+		
+		text.appendChild(node);
 		wrapper.appendChild(span);
 		wrapper.appendChild(text);
 		document.getElementsByClassName("selectBoxes")[0].appendChild(wrapper);
@@ -461,6 +495,7 @@ function seedParties(){
 		btn.style.width = "300px";
 		btn.setAttribute("onclick", "next()");
 		document.getElementsByClassName("selectBoxes")[0].appendChild(btn);
+
 }
 
 
@@ -483,6 +518,8 @@ function saveParties(selectParty){
 		  selectParties.splice(index, 1);
 		}
 	}
+
+	answers[questionIndex] = selectParties;
 }
 
 function getLogo(input){
@@ -511,7 +548,7 @@ function getLogo(input){
 			return "img/50plus.svg";
 		break;
 
-		case "Voor Nederland":
+		case "VNL":
 			return "img/vnl.svg";
 		break;
 
@@ -592,7 +629,7 @@ function seedResults(){
 function moveBar(index){
 	var elem = document.getElementsByClassName("scoreBar")[index];   
 	var width = 0;
-	var scoreWidth = score[answers[31][index]] * 3.3;
+	var scoreWidth = score[answers[31][index]] * 2;
 	if (scoreWidth != 0){
 		var id = setInterval(function(){
 			if (width >= scoreWidth) {
@@ -608,11 +645,8 @@ function moveBar(index){
 		}, 50);		
 	}else{
 		elem.style.width = width + '%'; 
-		elem.innerHTML = width * 1  + '%';
 	}
 }
-
-
 
 
 
