@@ -580,7 +580,6 @@ body .content .startBack .parties div .w3-badge {
   }
 }
 body .content .poll {
-  min-height: 850px;
   width: 1250px;
   margin: 0 auto;
   background: white;
@@ -735,16 +734,18 @@ body .content .poll .selectBoxes .continue:hover {
 body .content .results {
   display: none;
   text-align: center;
-  background: lightgrey;
-  max-height: 215px;
+  background: white;
   margin-top: -4em;
 }
 body .content .results .podium {
   display: inline-block;
-  margin: 0 5em 0;
+  margin: 0 0 5em;
   background: url("../img/spotlight.svg");
   background-position: inherit;
-  max-width: 250px;
+  background-repeat: no-repeat;
+  background-color: lightgrey;
+  max-width: 415px;
+  padding: 0 2em;
 }
 body .content .results .podium .resultImg {
   width: 130px;
@@ -756,12 +757,12 @@ body .content .results .podium .pedestal {
   width: 250px;
   margin: 1em auto 1em;
 }
-body .content .results .podium .barContainer {
+body .content .barContainer {
   width: 250px;
   margin: 0 auto;
   height: 20px;
 }
-body .content .results .podium .barContainer .scoreBar {
+body .content .scoreBar {
   background: #04b4dc;
   color: white;
   height: 20px;

@@ -31,6 +31,7 @@ var score = {
 	"DENK" : 0,
 	"Artikel 1" : 0
 };
+var sortedScore = {};
 
 var selectParties = [];
 answers[30] = [] ;
@@ -178,7 +179,12 @@ function back(){
 			document.getElementsByClassName("contentWrapper")[0].style.display = "block";
 			document.getElementsByClassName("results")[0].style.display = "none";
 
-			questionIndex--;	
+			var node = document.getElementsByClassName("results")[0];
+			while (node.firstChild) {
+				node.removeChild(node.firstChild);
+			}
+
+			questionIndex--;
 		break;
 
 		default:
@@ -291,6 +297,7 @@ function next(choice){
 			document.getElementsByClassName("contentWrapper")[0].style.display = "none";
 			document.getElementsByClassName("results")[0].style.display = "block";
 			questionIndex++;
+			sortProperties(score);
 			seedResults();
 		}
 		break;
@@ -337,15 +344,11 @@ function next(choice){
 }
 
 function showTooltip(index){
-	setTimeout(function(){
 		document.getElementsByClassName("tooltiptext")[index.getAttribute("data-value")].style.visibility = "visible";
-	}, 500);
 }
 
 function hideTooltip(index){
-	setTimeout(function(){
 		document.getElementsByClassName("tooltiptext")[index.getAttribute("data-value")].style.visibility = "hidden";
-	}, 500);
 }
 
 function seedImportant(){
@@ -620,35 +623,169 @@ function getLogo(input){
 
 function seedResults(){
 	for(let x=0;x<3;x++){
-		document.getElementsByClassName("resultImg")[x].src = getLogo(answers[31][x]);
-		moveBar(x);
+		var wrapper  = document.createElement('div');
+		wrapper.classList.add('podium');
+		wrapper.style.display = "inline-block";
+
+		var cover = document.createElement('img');
+		cover.classList.add('resultImg');
+		cover.src = getLogo(answers[31][x]);
+		cover.alt = "cover";
+
+		var pedestal = document.createElement('img');
+		pedestal.classList.add('pedestal');
+		pedestal.src = "img/pedestal.svg";
+		pedestal.alt = "pedestal";
+
+		var bar = document.createElement('div');
+		bar.style.display = "inline-block";
+		bar.classList.add('w3-light-grey', 'barContainer');
+
+		var score = document.createElement('div');
+		score.classList.add('w3-container', 'w3-animate-opacity', 'scoreBar');
+
+		var header = document.createElement('h4');
+		header.classList.add('resultHeader');
+
+		var percent = document.createElement('p');
+		percent.classList.add('resultPercent');
+
+		var comment = document.createElement('p');
+		comment.classList.add('resultComment');
+
+		wrapper.appendChild(cover);
+		wrapper.appendChild(pedestal);
+		bar.appendChild(score);
+		wrapper.appendChild(bar);
+		wrapper.appendChild(header);
+		wrapper.appendChild(percent);
+		wrapper.appendChild(comment);
+		document.getElementsByClassName('results')[0].appendChild(wrapper);
+
+
+
+
+		moveBar(x, true);
 	}
+
+	// Dynamisch creeren van alle gekozen partijen incl styling.
+	setTimeout(function(){
+		for(var i = 0; i<answers[31].length; i++){
+			var row = document.createElement("div");
+			row.style.margin = "0 26.5em";
+			row.style.maxWidth = "400px";
+
+			var logo = document.createElement('img');
+			logo.style.float = "left";
+			logo.style.width = "50px";
+			logo.style.height = "50px";
+			logo.style.display = "inline-block";
+			logo.classList.add('rowImg');
+
+			var bar = document.createElement('div');
+			bar.style.display = "inline-block";
+			bar.style.margin = "1em 0";
+			bar.classList.add('w3-light-grey', 'barContainer');
+
+			var score = document.createElement('div');
+			score.classList.add('w3-container', 'w3-animate-opacity', 'scoreBar');
+			score.style.textAlign = "unset";
+
+			var scoreText = document.createElement('p');
+			scoreText.classList.add('scoreText');
+			scoreText.style.color = "black";
+			scoreText.style.margin = "0 0 0 7.5em";
+
+			score.appendChild(scoreText);
+			bar.appendChild(score);
+			row.appendChild(logo);
+			row.appendChild(bar);
+			document.getElementsByClassName('results')[0].appendChild(row);
+		}
+	
+
+		sortIndex = 0;
+		for(var i in sortedScore){
+			document.getElementsByClassName('rowImg')[sortIndex].src = getLogo(i);
+			moveBar(sortIndex, false, i);
+			sortIndex++;
+		}
+	}, 1000);
 }
 
 
-function moveBar(index){
-	var elem = document.getElementsByClassName("scoreBar")[index];   
-	var width = 0;
-	var scoreWidth = score[answers[31][index]] * 2;
-	if (scoreWidth != 0){
-		var id = setInterval(function(){
-			if (width >= scoreWidth) {
-			  clearInterval(id);
-			} else {
-			  width++; 
-			  elem.style.width = width + '%'; 
-			
+function moveBar(index, stage, party){
+	if(stage == true){
+		var elem = document.getElementsByClassName("scoreBar")[index];   
+		var width = 0;
+		var scoreWidth = score[answers[31][index]] * 2;
+		if (scoreWidth != 0){
+			var id = setInterval(function(){
+				if (width >= 100) {
+					clearInterval(id);
+				} 
+				else {
+					width++; 
+					elem.style.width = width + '%'; 
+					document.getElementsByClassName("resultHeader")[index].innerHTML = answers[31][index];
+					document.getElementsByClassName("resultPercent")[index].innerHTML = width + "%";
+					document.getElementsByClassName("resultComment")[index].innerHTML = "Overeenkomst";
+
+				}
+			}, 50);		
+		}else{
+			elem.style.width = width + '%';
 			document.getElementsByClassName("resultHeader")[index].innerHTML = answers[31][index];
 			document.getElementsByClassName("resultPercent")[index].innerHTML = width + "%";
-			document.getElementsByClassName("resultComment")[index].innerHTML = "Overeenkomst"
-			}
-		}, 50);		
+			document.getElementsByClassName("resultComment")[index].innerHTML = "Overeenkomst";
+		}
 	}else{
-		elem.style.width = width + '%'; 
+		var elem = document.getElementsByClassName("scoreBar")[index+3];   
+		var width = 0;
+		var scoreWidth = sortedScore[party] * 2;
+		if (scoreWidth != 0){
+			var id = setInterval(function(){
+				if (width >= 100) {
+					clearInterval(id);
+				} 
+				else {
+					width++; 
+					elem.style.width = width + '%'; 
+					document.getElementsByClassName('scoreText')[index].innerHTML = width + '%';
+				}
+			}, 50);		
+		}else{
+			elem.style.width = width + '%';
+			document.getElementsByClassName('scoreText')[index].innerHTML = width + '%';
+		}
 	}
 }
 
+function sortProperties(obj){
+  // convert object into array
+	var sortable = [];
+	for(var key in obj)
+		if(obj.hasOwnProperty(key))
+			sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+	
+	// sort items by value
+	sortable.sort(function(b, a)
+	{
+	  return a[1]-b[1]; // compare numbers
+	});
+	console.log(sortable[0][0]);
 
+	for(var x = 0; x < sortable.length; x++){
+
+		if(answers[31].includes(sortable[x][0])){
+			sortedScore[`${sortable[x][0]}`] = sortable[x][1];
+
+		}
+	}
+
+
+	return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+}
 
 
 
