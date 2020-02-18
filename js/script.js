@@ -1,11 +1,22 @@
+// Elementen cache
 const start = document.getElementsByClassName("start")[0];
 const startBack = document.getElementsByClassName("startBack")[0];
 const poll = document.getElementsByClassName("poll")[0];
 const progress = document.getElementsByClassName("progress")[0];
 
-var questionIndex = 0;
+//Globale index voor het selecteren van data
+var questionIndex = -1;
+
+//answers object die per vraag het antwoord bijhoud
 var answers = {};
+
+//temp array die de aangeklikte 'belangrijke' statements opslaat welke vervolgens in die answers word opgeslagen als array
 var important = [];
+
+//temp array die de aangeklikte partijen opslaat welke vervolgens in die answers word opgeslagen als array
+var selectParties = [];
+
+//score object die bijhoud en count wanneer er een overeenkomt is tussen jouw antwoord en de positie van de partij
 var score = {
 	"PVV" : 0,
 	"SP" : 0,
@@ -31,30 +42,29 @@ var score = {
 	"DENK" : 0,
 	"Artikel 1" : 0
 };
+
+//object wat de inhoud krijgt van het score object, maar dan gesorteerd van hoog naar laag
 var sortedScore = {};
 
-var selectParties = [];
-answers[30] = [] ;
+//initialiseren van het object answers voor de include functie (deze geeft anders terug dat deze index niet bestaat)
+answers[30] = [];
 answers[31] = [];
 
-start.onclick = function(){
-	startBack.style.display = "none";
-	poll.style.display = "block";
-	seedStatement(questionIndex);
-}
-
+//opent of sluit de modal aan de hand van de parameter
 function toggleModal(config){
 	config == "open" ? opinionModal.style.display='block' : opinionModal.style.display='none' ;
 }
 
+//Seed de modal content div met de toelichtingen van de partijen per statement.
 function seedOpinion(index){
 	for(i=0;i<23;i++){
+		//variabel die bepaald aan welke div append word aan de hand van pro, contra of none
 		var appendParent;
-
 		subjects[index]["parties"][i]["position"] == "pro" ? appendParent = 0 : "";
-		subjects[index]["parties"][i]["position"] == "contra" ? appendParent = 2 : "";
+		subjects[index]["parties"][i]["position"] == "contra" ? appendParent = 2 : ""; 
 		subjects[index]["parties"][i]["position"] == "none" ? appendParent = 1 : "";
-		
+
+		//dynamisch creeeren van de rijen
 		var wrapper = document.createElement("div");
 		wrapper.classList.add('w3-container', 'opinionRow');
 		wrapper.id = "opinionRow";
@@ -67,32 +77,37 @@ function seedOpinion(index){
 		btn.style.color = "black";
 		btn.style.textAlign = "left";
 		btn.innerHTML = subjects[index]["parties"][i]["name"];
-		wrapper.appendChild(btn);
+		
 
 		var opinion = document.createElement("div");
 		opinion.setAttribute("id", subjects[index]["parties"][i]["name"]);
 		opinion.innerHTML = subjects[index]["parties"][i]["opinion"];
 		opinion.classList.add('w3-hide', 'w3-container', 'w3-animate-opacity');
+
+
+		wrapper.appendChild(btn);
 		wrapper.appendChild(opinion);
 		document.getElementsByClassName("partyOpinion")[appendParent].appendChild(wrapper);
 	}
 }
 
+//functie die bepaald wat er per statement voor tekst te zien is
 function seedStatement(index){
 	statement.innerHTML = questionIndex+1 + ". " + subjects[index]["title"];
 	comment.innerHTML = subjects[index]["statement"];
 
 	for(i=0;i<3;i++){
 		var parent = document.getElementsByClassName("partyOpinion")[i];
-		var childs = document.getElementsByClassName("opinionRow");
-		for (x=0;x<childs.length;x++){
-			childs[x].parentNode.removeChild(childs[x]);
+
+		while (parent.childNodes.length > 2) {
+		    parent.removeChild(parent.lastChild);
 		}
 	}
-	
+	//aanroepen van bovenstaande functie om de modal te vullen met toelichtingen
 	seedOpinion(index);
 }
 
+//functie die de toelichten per partij opent als een 'accordion'
 function openAccordion(party){
 	var x = document.getElementById(party);
 
@@ -103,19 +118,24 @@ function openAccordion(party){
 	}
 }
 
+//functie die bepaald wat er gebeurd wanneer je op terug klikt aan de hand van de vraag index
 function back(){
-	// answers[questionIndex] = "";
 
 	switch(questionIndex) {
+
+		//Wanneer je bij vraag 1 bent, word het statement scherm verborgen en het start scherm getoond
 		case 0:
 			document.getElementById("progressBar").style.width = "0%";
 			startBack.style.display = "block";
 			poll.style.display = "none";
+			questionIndex--;
 		break;
 
+		//Wanneer je bij de belangrijke stellingen bent, word het statement scherm verborgen en zal je naar vraag 30 gaan.
 		case 30:
 			questionIndex--;
 
+			//Haalt 1 van de score af voor de vraag, zodat deze weer opgeteld kan worden aan de hand van je nieuwe keuze.
 			for(let x=0;x<subjects[0]["parties"].length;x++){
 				switch(subjects[questionIndex]["parties"][x]["position"]){
 					case "pro":
@@ -138,6 +158,7 @@ function back(){
 				}
 			}
 
+			//Styling voor het verbergen van de belangrijke stellingen en het tonen van de vraag
 			seedStatement(questionIndex);
 			document.getElementsByClassName("statementControls")[0].style.display = "block";
 			document.getElementsByClassName("opinion")[0].style.display = "block";
@@ -145,6 +166,13 @@ function back(){
 			document.getElementsByClassName("statementWrapper")[0].style.marginBottom = "7.5em";
 			document.getElementsByClassName("contentWrapper")[0].style.minHeight = "850px";
 
+			//Styling voor het tonen van de vraagkeuze
+			EENS.removeAttribute("style");
+			GEEN.removeAttribute("style");
+			ONEENS.removeAttribute("style");
+
+			answers[questionIndex] != "SKIP" ?
+			document.getElementById(answers[questionIndex]).style.background = "#04b4dc" : "" ;
 
 			var node = document.getElementsByClassName("selectBoxes")[0];
 			while (node.firstChild) {
@@ -153,8 +181,8 @@ function back(){
 			
 		break;
 
+		//Wanneer je bij de partijen bent, word het statement scherm getoont
 		case 31:
-
 			statement.innerHTML = "Zijn er onderwerpen die u extra belangrijk vindt?";
 			comment.innerHTML = "Aangevinkte stellingen tellen extra mee bij het berekenen van het resulaat.";
 			document.getElementsByClassName("statementControls")[0].style.display = "none";
@@ -168,12 +196,13 @@ function back(){
 				node.removeChild(node.firstChild);
 			}
 
-
 			questionIndex--;
 			seedImportant();
 		break;
 
 			case 32:
+			//Opnieuw initialiseren van het sortedScore object, zodat deze opnieuw gesorteerd aangevuld kan worden, in plaats van dat de value alleen aangepast word.
+			sortedScore = {};
 
 			document.getElementsByClassName("selectBoxes")[0].style.display = "flex";
 			document.getElementsByClassName("contentWrapper")[0].style.display = "block";
@@ -188,6 +217,7 @@ function back(){
 		break;
 
 		default:
+			//vullen van de progressBar bovenaan de vragen. dit gaat per vraag met 3.3 procent
 			var increase = (questionIndex) * 3.3;
 			document.getElementById("progressBar").style.width = increase + "%";
 
@@ -201,6 +231,7 @@ function back(){
 			answers[questionIndex] != "SKIP" ?
 			document.getElementById(answers[questionIndex]).style.background = "#04b4dc" : "" ;
 
+			//Haalt 1 van de score af voor de vraag, zodat deze weer opgeteld kan worden aan de hand van je nieuwe keuze.
 			for(let x=0;x<subjects[0]["parties"].length;x++){
 				switch(subjects[questionIndex]["parties"][x]["position"]){
 					case "pro":
@@ -226,12 +257,25 @@ function back(){
 	}
 }
 
+//functie die bepaald wat er gebeurd als er op een button word geklikt om verder te gaan aan de hand van de vraagindex
 function next(choice){
+
 	switch(questionIndex){
+
+		//Van het startscherm naar vraag 1
+		case -1:
+			startBack.style.display = "none";
+			poll.style.display = "block";
+			questionIndex++;
+			seedStatement(questionIndex);
+		break;
+
 		case 29:
+		//Wanneer je vraag 30 voorbij bent word de status bar breedte op 100% gezet, anders zou deze op "99,nog wat" staan
 		document.getElementById("progressBar").style.width = "100%";
 		answers[questionIndex] = choice;
 
+		//Telt 1 op bij de score aan de hand van een overeenkomst in de positie van de partij en jouw keuze
 		for(let x=0;x<subjects[0]["parties"].length;x++){
 			switch(subjects[questionIndex]["parties"][x]["position"]){
 				case "pro":
@@ -266,6 +310,7 @@ function next(choice){
 
 		break;
 
+		//van belangrijke stellingen naar partijen die je mee wilt nemen
 		case 30:
 		questionIndex++;
 
@@ -280,26 +325,25 @@ function next(choice){
 		seedParties();
 		break;
 
+		//van partijen die u mee wilt nemen naar het resultaat.
 		case 31:
-		if(selectParties.length < 3){
-			error.style.display = "block";
-			errorContent.innerHTML = "Selecteer op zijn minst 3 partijen!";
+			//wanneer je minder dan 3 partijen geselecteerd hebt, zal je niet verder gaan en komt er een melding in beeld
+			if(selectParties.length < 3){
+				error.style.display = "block";
+				errorContent.innerHTML = "Selecteer op zijn minst 3 partijen!";
 
-			setTimeout(function(){
-				error.style.display = "none";
-			}, 1500);
-
-
-
-		}else{
-			answers[questionIndex] = selectParties;
-			document.getElementsByClassName("selectBoxes")[0].style.display = "none";
-			document.getElementsByClassName("contentWrapper")[0].style.display = "none";
-			document.getElementsByClassName("results")[0].style.display = "block";
-			questionIndex++;
-			sortProperties(score);
-			seedResults();
-		}
+				setTimeout(function(){
+					error.style.display = "none";
+				}, 1500);
+			}else{
+				answers[questionIndex] = selectParties;
+				document.getElementsByClassName("selectBoxes")[0].style.display = "none";
+				document.getElementsByClassName("contentWrapper")[0].style.display = "none";
+				document.getElementsByClassName("results")[0].style.display = "block";
+				questionIndex++;
+				sortProperties(score);
+				seedResults();
+			}
 		break;
 
 		default:
@@ -309,11 +353,11 @@ function next(choice){
 
 		answers[questionIndex] = choice;
 		
-
 		EENS.removeAttribute("style");
 		GEEN.removeAttribute("style");
 		ONEENS.removeAttribute("style");
 
+		//Telt 1 op bij de score aan de hand van een overeenkomst in de positie van de partij en jouw keuze		
 		for(let x=0;x<subjects[0]["parties"].length;x++){
 			switch(subjects[questionIndex]["parties"][x]["position"]){
 				case "pro":
@@ -343,14 +387,17 @@ function next(choice){
 	}
 }
 
+//on mouse enter event voor het weergeven van de stelling informatie
 function showTooltip(index){
 		document.getElementsByClassName("tooltiptext")[index.getAttribute("data-value")].style.visibility = "visible";
 }
 
+//on mouse out event voor het weergeven van de stelling informatie
 function hideTooltip(index){
 		document.getElementsByClassName("tooltiptext")[index.getAttribute("data-value")].style.visibility = "hidden";
 }
 
+//functie voor het vullen van de interface van belangrijke stellingen
 function seedImportant(){
 	for(x=0;x<30;x++){
 		var wrapper = document.createElement("div");
@@ -409,6 +456,7 @@ function seedImportant(){
 		document.getElementsByClassName("selectBoxes")[0].appendChild(btn);
 }
 
+//functie die de aangeklikte stelling opslaat in important en de score opteld bij de partijen die het ook eens zijn
 function saveImportant(statement){
 	var elem = statement.firstChild.firstChild;
 	statement.classList.toggle("selected");
@@ -453,10 +501,10 @@ function saveImportant(statement){
 			}
 		}
 	}
-
 	answers[questionIndex] = important;
 }
 
+//functie voor het vullen van de interface voor de partijen die u mee wilt nemen in de resultasten
 function seedParties(){
 	for ( var key in score ) {
 
@@ -491,17 +539,58 @@ function seedParties(){
 		wrapper.appendChild(text);
 		document.getElementsByClassName("selectBoxes")[0].appendChild(wrapper);
 	}
-		var btn = document.createElement("button");
-		btn.innerHTML = "GA VERDER";
-		btn.classList.add("continue", "w3-animate-opacity");
-		btn.style.margin = "1em";
-		btn.style.width = "300px";
-		btn.setAttribute("onclick", "next()");
-		document.getElementsByClassName("selectBoxes")[0].appendChild(btn);
+	var btn = document.createElement("button");
+	btn.innerHTML = "GA VERDER";
+	btn.classList.add("continue", "w3-animate-opacity");
+	btn.style.margin = "1em";
+	btn.style.width = "300px";
+	btn.setAttribute("onclick", "next()");
+	document.getElementsByClassName("selectBoxes")[0].appendChild(btn);
 
+	for(var i = 0; i < 3 ; i++){
+		var wrapper = document.createElement("div");
+		wrapper.classList.add("w3-container", "selectRow", "w3-animate-opacity");
+		wrapper.style.width = "300px";
+		wrapper.style.lineHeight = "50px";
+		wrapper.style.cursor = "pointer";
+
+		
+
+		var span = document.createElement("span");
+		span.innerHTML = "<i class='far fa-square'></i>";
+		span.style.float = "left";
+		span.style.marginRight = "1em";
+		span.style.fontSize = "1em";
+
+		var text = document.createElement("p");
+		text.style.display = "inline-block";
+		
+		//aanmaken van de knoppen om meerdere partijen te selecteren
+		switch(i){
+			case 0:
+				wrapper.setAttribute("onclick", "selectMultiple('all')");
+				var node = document.createTextNode("Selecteer alle partijen");
+			break;
+
+			case 1:
+				wrapper.setAttribute("onclick", "selectMultiple('seats')");
+				var node = document.createTextNode("Selecteer zittende partijen");
+			break;
+
+			case 2:
+				wrapper.setAttribute("onclick", "selectMultiple('delete')");
+				var node = document.createTextNode("Verwijder selectie");
+			break;
+		}
+
+		text.appendChild(node);
+		wrapper.appendChild(span);
+		wrapper.appendChild(text);
+		document.getElementsByClassName("selectBoxes")[0].appendChild(wrapper);
+	}
 }
 
-
+// functie voor het opslaan van de partijen die u mee wilt nemen in de resultaten
 function saveParties(selectParty){
 	var elem = selectParty.firstChild.firstChild;
 	selectParty.classList.toggle("selected");
@@ -525,6 +614,7 @@ function saveParties(selectParty){
 	answers[questionIndex] = selectParties;
 }
 
+//functie voor het ophalen van de juiste backgrounds per partij naam
 function getLogo(input){
 	switch(input){
 		case "PVV": 
@@ -621,6 +711,7 @@ function getLogo(input){
 	}
 }
 
+//functie voor het aanmaken & vullen van de resultaten interface
 function seedResults(){
 	for(let x=0;x<3;x++){
 		var wrapper  = document.createElement('div');
@@ -629,7 +720,7 @@ function seedResults(){
 
 		var cover = document.createElement('img');
 		cover.classList.add('resultImg');
-		cover.src = getLogo(answers[31][x]);
+		cover.src = getLogo(Object.keys(sortedScore)[x]);
 		cover.alt = "cover";
 
 		var pedestal = document.createElement('img');
@@ -668,7 +759,7 @@ function seedResults(){
 		moveBar(x, true);
 	}
 
-	// Dynamisch creeren van alle gekozen partijen incl styling.
+	// Dynamisch creeren van alle gekozen partijen incl styling met een vertraging van 1 seconde.
 	setTimeout(function(){
 		for(var i = 0; i<answers[31].length; i++){
 			var row = document.createElement("div");
@@ -694,7 +785,7 @@ function seedResults(){
 			var scoreText = document.createElement('p');
 			scoreText.classList.add('scoreText');
 			scoreText.style.color = "black";
-			scoreText.style.margin = "0 0 0 7.5em";
+			scoreText.style.margin = "0 auto";
 
 			score.appendChild(scoreText);
 			bar.appendChild(score);
@@ -713,29 +804,30 @@ function seedResults(){
 	}, 1000);
 }
 
-
+// //functie voor het berekenen van de score bar breedte. 
+// De parameters die meegestuurd worden zijn de index die de nodelist van de scorebar afgaan, 
+// de stage bepaald of het gaat om de bovenste 3 partijen gaat of alle partijen onderaan en party bevat de betreffende partij.
 function moveBar(index, stage, party){
 	if(stage == true){
 		var elem = document.getElementsByClassName("scoreBar")[index];   
 		var width = 0;
-		var scoreWidth = score[answers[31][index]] * 2;
+		var scoreWidth = sortedScore[Object.keys(sortedScore)[index]] * 2;
 		if (scoreWidth != 0){
 			var id = setInterval(function(){
-				if (width >= 100) {
+				if (width >= scoreWidth || width >= 100) {
 					clearInterval(id);
 				} 
 				else {
 					width++; 
 					elem.style.width = width + '%'; 
-					document.getElementsByClassName("resultHeader")[index].innerHTML = answers[31][index];
+					document.getElementsByClassName("resultHeader")[index].innerHTML = Object.keys(sortedScore)[index];
 					document.getElementsByClassName("resultPercent")[index].innerHTML = width + "%";
 					document.getElementsByClassName("resultComment")[index].innerHTML = "Overeenkomst";
-
 				}
 			}, 50);		
 		}else{
 			elem.style.width = width + '%';
-			document.getElementsByClassName("resultHeader")[index].innerHTML = answers[31][index];
+			document.getElementsByClassName("resultHeader")[index].innerHTML = Object.keys(sortedScore)[index];
 			document.getElementsByClassName("resultPercent")[index].innerHTML = width + "%";
 			document.getElementsByClassName("resultComment")[index].innerHTML = "Overeenkomst";
 		}
@@ -745,7 +837,7 @@ function moveBar(index, stage, party){
 		var scoreWidth = sortedScore[party] * 2;
 		if (scoreWidth != 0){
 			var id = setInterval(function(){
-				if (width >= 100) {
+				if (width >= scoreWidth || width >= 100) {
 					clearInterval(id);
 				} 
 				else {
@@ -761,19 +853,19 @@ function moveBar(index, stage, party){
 	}
 }
 
+//zet een object om in een sorteerbare array en returned deze.
 function sortProperties(obj){
-  // convert object into array
+  // omzetten van het object in een sorteerbare array
 	var sortable = [];
 	for(var key in obj)
 		if(obj.hasOwnProperty(key))
-			sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+			sortable.push([key, obj[key]]);
 	
-	// sort items by value
+	// sorteer items aan de hand van de value
 	sortable.sort(function(b, a)
 	{
-	  return a[1]-b[1]; // compare numbers
+	  return a[1]-b[1];
 	});
-	console.log(sortable[0][0]);
 
 	for(var x = 0; x < sortable.length; x++){
 
@@ -782,10 +874,45 @@ function sortProperties(obj){
 
 		}
 	}
-
-
-	return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+	return sortable; // array in formaat [key1, value1], [key2, value2] enzovoort
 }
+
+//fucntie om meerdere partijen te selecteren aan de hand van het bevatten van de 'selected' class
+function selectMultiple(config){
+	switch(config){
+		case "all":
+			for(var i = 0; i < 23 ; i++){
+				if(document.getElementsByClassName('selectRow')[i].classList.contains('selected') == false){
+					saveParties(document.getElementsByClassName('selectRow')[i]);	
+				}
+			}
+		break;
+
+		case "seats":
+			for(var i = 0; i < 23 ; i++){
+				if(document.getElementsByClassName('selectRow')[i].classList.contains('selected') == true){
+					saveParties(document.getElementsByClassName('selectRow')[i]);
+				}
+			}
+			for(var i = 0; i < 23 ; i++){
+				if(parties[i]['size'] >= 5 && document.getElementsByClassName('selectRow')[i].classList.contains('selected') == false){
+					saveParties(document.getElementsByClassName('selectRow')[i]);
+
+				}
+			}
+		break;
+
+		case "delete":
+			for(var i = 0; i < 23 ; i++){
+				if(document.getElementsByClassName('selectRow')[i].classList.contains('selected') == true){
+					saveParties(document.getElementsByClassName('selectRow')[i]);
+				}
+			}
+		break;
+	}
+}
+
+
 
 
 

@@ -151,4 +151,41 @@
   background: #04b4dc !important;
 }
 
+@media (max-width: 1160px) {
+  .content {
+    font-size: 10px;
+  }
+
+  .poll {
+    width: 1000px;
+  }
+  .poll .back {
+    margin-left: 2em;
+  }
+  .poll .contentWrapper {
+    padding: 2em 5em;
+  }
+  .poll .contentWrapper .statementControls button {
+    width: 150px;
+    font-size: 1rem;
+  }
+  .poll .contentWrapper .opinion p, .poll .contentWrapper #opinionModal div .modalHeader div p {
+    font-size: 1em;
+  }
+  .poll .contentWrapper #opinionModal div .modalHeader #closeModal {
+    width: 2em;
+    padding: 0;
+    height: 22px;
+    font-size: 1em;
+    line-height: 22px;
+  }
+  .poll .contentWrapper #opinionModal div .modalHeader div {
+    padding-left: 2.5em;
+  }
+
+  .w3-modal-content {
+    width: 850px;
+  }
+}
+
 /*# sourceMappingURL=poll.css.map */

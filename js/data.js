@@ -3718,11 +3718,6 @@ var parties = [{
     "size": 0
   },
   {
-    "name": "Libertarische Partij",
-    "secular": true,
-    "size": 0
-  },
-  {
     "name": "Niet Stemmers",
     "secular": true,
     "size": 0

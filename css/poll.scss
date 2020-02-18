@@ -178,3 +178,48 @@ $lightblue: #04b4dc;
 		}
     }
 }
+
+@media (max-width: 1160px){
+	.content{
+		font-size: 10px;
+	}
+	.poll{
+		width: 1000px;
+		.back{
+			margin-left: 2em;
+		}
+		.contentWrapper{
+			padding: 2em 5em;
+			.statementControls{
+				button{
+					width: 150px;
+					font-size: 1rem;
+				}
+			}
+			.opinion{
+				p{
+					font-size: 1em;
+				}
+			}
+			#opinionModal{
+				div{
+					.modalHeader{
+						#closeModal{
+							width: 2em;
+							padding: 0;
+							height: 22px;
+							font-size: 1em;
+							line-height: 22px;
+						}		
+						div{
+						    padding-left: 2.5em;
+						}				
+					}
+				}
+			}			
+		}
+	}
+	.w3-modal-content{
+		width: 850px;
+	}
+}

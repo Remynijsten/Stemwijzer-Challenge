@@ -731,6 +731,40 @@ body .content .poll .selectBoxes .continue {
 body .content .poll .selectBoxes .continue:hover {
   background: #04b4dc !important;
 }
+@media (max-width: 1160px) {
+  body .content .content {
+    font-size: 10px;
+  }
+  body .content .poll {
+    width: 1000px;
+  }
+  body .content .poll .back {
+    margin-left: 2em;
+  }
+  body .content .poll .contentWrapper {
+    padding: 2em 5em;
+  }
+  body .content .poll .contentWrapper .statementControls button {
+    width: 150px;
+    font-size: 1rem;
+  }
+  body .content .poll .contentWrapper .opinion p, body .content .poll .contentWrapper #opinionModal div .modalHeader div p {
+    font-size: 1em;
+  }
+  body .content .poll .contentWrapper #opinionModal div .modalHeader #closeModal {
+    width: 2em;
+    padding: 0;
+    height: 22px;
+    font-size: 1em;
+    line-height: 22px;
+  }
+  body .content .poll .contentWrapper #opinionModal div .modalHeader div {
+    padding-left: 2.5em;
+  }
+  body .content .w3-modal-content {
+    width: 850px;
+  }
+}
 body .content .results {
   display: none;
   text-align: center;
